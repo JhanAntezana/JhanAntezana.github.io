@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/3f38b82aea.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="juegos.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="ps4">
+        <div class="contenedor">
+            <header>
+                <div class="basic">
+                    <div class="container-logo">
+                        <p><img src="../../img/goLogo.jpg" alt="logo"></p>
+                    </div>
+                    <div class="container-search">
+                        <input type="text" name="buscador" placeholder="Buscar Juego">
+                        <button><i class="fas fa-search"></i></button>
+                        
+                    </div>
+                    <div>
+                        <div class="acceso">
+                            <a href="#">Iniciar</a>
+
+                            <a v-on:click="mostrarR()">Registrar</a>
+                        </div>
+                        
+                    </div>
+                    <div class="carrito">
+                        <button>
+                            <a href="../../carrito/carrito.html"><i class="fas fa-shopping-cart lupa"></i> </a>
+                            
+                        </button>
+                        
+                    </div>
+                </div>
+                <br>
+                <nav class="nav-menu">
+                    <ul>
+                        <li><a href="../../index.html">Inicio</a></li>
+                        <li><a href="../ps5/ps5.html">Playstation 5</a></li>
+                        <li><a href="ps4.html">Playstation 4</a></li>
+                        <li><a href="../ps3/ps3.html">Playstation 3</a></li>
+                        <li><a href="../NintendoSwitch/nintendo.html">Nintendo Switch</a></li>
+                        <li><a href="../enPromocion/enPromocion.html">Juegos en promoción</a></li>
+                        <li><a href="file:///C:/Deck.js/deck.js-latest/boilerplate.html">Documentacion</a></li>
+                        <li><a href="https://www.youtube.com/" target="_blank">Presentación</a></li>
+                        <li><a href="https://www3.animeflv.net/" target="_blank">Pdf</a></li>
+                    </ul>
+                    <br>
+                    <hr>
+                </nav>
+            </header>
+            
+
+        </div>
+        <br>
+        <section class="seccion">
+            <div v-for="juego of juegos" class="container-juego" >
+                <div class="imagen">
+                    <a href="#"><img v-bind:src="juego.url"></a>
+                </div>
+                <p >{{juego.nombre}} <br><b class="precio">S/. {{juego.precio}}0</b> </p>
+                <button>Añadir al carrito</button>
+            </div>
+        </section>
+    </div>
+    <script src="ps4.js"></script>
+</body>
+</html>

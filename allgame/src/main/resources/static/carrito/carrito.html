@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/3f38b82aea.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="carrito.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="cesta">
+        <div class="container">
+            <div class="carrito">
+                <div class="encabezado">
+                    <h3>Carrito</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, atque.</p>
+                    
+                </div>
+                <br>
+                <div class="esp-juego" v-for="juego of juegos">
+                    <div class="img-juego">
+                        <img v-bind:src="juego.url" alt="juego" width="100%">
+                    </div>
+                    <div class="descripcion">
+                        <h3>{{juego.nombre}}</h3>
+                        <br>
+                        <p>{{juego.descripcion}} </p>
+                        
+                    </div>
+                    <div class="adicionales">
+                        <div>
+                            <button><i class="fas fa-share-alt"></i></button>
+                            <button @click="quitarDelCarrito(juego.id_juego)"><i class="far fa-trash-alt"></i></button>
+                        </div>
+                        <br>
+                        <div class="cantidad">
+                            <div v-if = "cantidad === 1">
+                                <button @click = "cantidad = 1">-</button>
+                            </div>
+                            <div v-else>
+                                <button @click = "cantidad--">-</button>
+                            </div>
+                            <div>
+                                <input v-model="cant" aria-valuemax="25" aria-valuemin="1" autocomplete="off" value="1" v-model.number = "cantidad">
+                            </div>
+                            <div v-if = "cantidad < 25">
+                                <button @click = "cantidad++">+</button>
+                            </div>
+                            <div v-if = "cantidad === 25">
+                                <button @click = "cantidad = 25">+</button>
+                            </div>
+                        </div>
+
+                        <div>
+                            <p><b>Especificacion</b></p>
+                            <p><b>S/. {{juego.precio}} </b></p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="resumen">
+                <h3>Resumen del pedido</h3>
+                <p>Subtotal: S/. {{subTotal}}0</p>
+                <p>Envío: S/. {{costoEnvio}}0</p>
+                <hr>
+                <p><b>Total : S/. {{sumarTotal}}0 </b></p>
+                <button type="submit" class="comprar"><a href="pago/pago.html">Comprar</a> </button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="carrito.js"></script>
+</body>
+</html>

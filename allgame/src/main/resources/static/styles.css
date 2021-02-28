@@ -1,0 +1,177 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#App{
+    background: rgb(0, 0, 0);
+    font-family: sans-serif;
+    color: rgb(0, 0, 0);
+}
+#App a{
+    color: #ffffffff;
+    text-decoration: none;
+    font-family: sans-serif;
+}
+ul{
+    list-style: none;
+}
+.contenedor{
+    width: 90%;
+    /* background: gold; */
+    margin: 0 auto;
+    margin-top: 45px;
+}
+header{
+    width: 90%;
+    justify-content: center;
+    /* background: dodgerblue; */
+    margin: 0 auto;
+
+}
+.container-logo img{
+    height: 40px;
+    margin: 0 20px;
+}
+.basic{
+    display: flex;
+    justify-content: center ;
+    align-items: center;
+}
+.container-search{
+    width: 40%;
+    background-color: #ddd;
+    margin: 0 20px;
+    height: 35px;
+    border-radius: 35px;
+}
+.container-search input{
+    width: 100%;
+    height: 35px;
+    border-radius: 35px;
+    border: none;
+    padding: 15px;
+    border-bottom: solid 2px;
+
+}
+.container-search button{
+    position: absolute;
+    right: 38.4%;
+    border-radius: 35px;
+    border: none;
+    height: 33px;
+    width: 35px;
+}
+.acceso{
+    width: 200px;
+    margin: 0 20px;
+    display: flex;
+}
+
+.acceso a{
+    background: rgb(61, 103, 180);
+    width: 50%;
+    padding: 10px;
+    border-radius: 35px;
+    text-align: center;
+}
+.acceso :hover{
+    background:rgb(118, 119, 121);
+    color: #ffffffff;
+    
+}
+.carrito button{
+    border: none;
+    background: none;
+}
+.carrito i{
+    font-size: 22px;
+    color: rgb(61, 103, 180);
+}
+.carrito button  :hover{
+    color: rgb(118, 119, 121);
+}
+/*NAVEGACION*/
+.nav-menu ul{
+    display: flex;
+    justify-content: center;
+    height: 37px;
+}
+.nav-menu ul li{
+    height: 35px;
+    align-items: center;
+    padding-top: 10px;
+    
+}
+.nav-menu ul a{
+    background: rgb(61, 103, 180);
+    padding: 10px;
+    margin-bottom: 0;
+}
+.nav-menu ul a:hover{
+    background:rgb(118, 119, 121);
+    margin: 0 0.5em;
+    color: #ffffffff;
+}
+section{
+    height: 1000px;
+    justify-content: center;
+}
+.App hr{
+    margin: 5px 0;
+    height: 5px;
+    background-color: rgb(118, 119, 121);
+    border: none;
+    border-radius: 50%;
+}
+
+/*CAROUSEL*/
+.carousel img{
+    height: 700px;
+} 
+.container-carousel{
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+.subtitle{
+    text-align: center;
+}
+/* JUEGOS*/
+.container-juego{
+    /* background-color: rgb(194, 42, 42); */
+    width: 270px;
+    height: 400px;
+    margin: 20px 30px;
+    text-align: center;
+    line-height : 20px;
+    font-size: 16px
+}
+.section-games{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.container-juego img{
+    width: 270px;
+    height: 290px;
+}
+.container-juego .imagen :hover{
+    width: 280px;
+    height: 310px;
+}
+.container-juego .precio{
+    color: rgb(7, 77, 207);
+}
+.container-juego button{
+    height: 30px;
+    padding: 0 30px;
+    border-radius: 30px;
+    border: none;
+    background-color: rgb(243, 116, 43);
+    color: #ffffffff;
+}
+.container-juego :active{
+    background-color: rgb(226, 84, 1);
+}

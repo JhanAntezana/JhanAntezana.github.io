@@ -1,0 +1,94 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+a{
+    color: #fff;
+    text-decoration: none;
+}
+body{
+    background: #000;
+    justify-content: center;
+}
+
+.comprar{
+    background: rgb(255, 91, 50);
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: none;
+    width: 100%;
+    color: #fff;
+    font-size: 16px;
+    font-family: sans-serif;
+    margin-top: 20px;
+}
+.container{
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    
+}
+.carrito{
+    border-radius: 10px;
+    margin: 0 10px;
+    width: 60%;
+    padding: 10px 20px;
+}
+.carrito .encabezado{
+    background: rgb(228, 228, 228);
+    border-radius: 10px;
+    padding: 10px 20px;
+}
+.carrito .esp-juego{
+    display: flex;
+    background: rgb(228, 228, 228);
+    border-radius: 10px;
+    padding: 20px;
+}
+.carrito .img-juego{
+    width: 50%;
+}
+.carrito .descripcion{
+    width: 50%;
+    margin: 0 20px;
+}
+
+.carrito .adicionales{
+    width: 150px;
+    line-height : 35px;
+    padding-top: 50px;
+}
+.carrito .adicionales .cantidad{
+    display: flex;
+    justify-content: space-evenly;
+}
+.carrito .adicionales input{
+    width: 25px;
+    height: 25px;
+    text-align: center;
+}
+.carrito .adicionales button{
+    width: 27px;
+    height: 27px;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+}
+.carrito .adicionales .cantidad button{
+    background-color: rgb(61, 103, 180);
+    color: #fff;
+}
+.carrito .adicionales .cantidad :active{
+    background-color: rgb(118, 119, 121);
+}
+.resumen{
+    background: rgb(228, 228, 228);
+    margin: 0 10px;
+    width: 30%;
+    height: 210px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    line-height : 35px;
+}

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/3f38b82aea.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Kreon:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <!-- <script src="/path/to/vue.js"></script>
+    <script src="/path/to/vue-router.js"></script> -->
+    <title>AllGame</title>
+</head>
+<body>
+    <div id="App">
+        <div v-if="mostrarInicio" class="contenedor">
+            <header>
+                <div class="basic">
+                    <div class="container-logo">
+                        <p><img src="img/goLogo.jpg" alt="logo"></p>
+                    </div>
+                    <div class="container-search">
+                        <input type="text" name="buscador" placeholder="Buscar Juego" v-model = "juegoBuscado" @keyup.enter ="buscarJuego" >
+                        <button><i class="fas fa-search"></i></button>
+                        
+                    </div>
+                    <div>
+                        <div class="acceso" >
+                            <a v-on:click="mostrarL()">Iniciar</a>
+                        
+                            <a v-on:click="mostrarR()">Registrar</a>
+                        </div>
+<!--                         
+                        <div class="acceso" v-if="btnUS">
+                            <div v-model="usuario">Bienvenido {{usuario.nombre}}</div>
+                            <a href="index.html" >Salir</a>
+                        </div> -->
+                        
+                      
+                        
+                        
+                    </div>
+                    <div class="carrito">
+                        <button @click = "mostrarCarrito()">
+                            <a href="carrito/carrito.html"><i class="fas fa-shopping-cart lupa"></i> </a>
+                            
+                        </button>
+                        
+                    </div>
+                </div>
+                <nav class="nav-menu">
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="juegos/ps5/ps5.html">Playstation 5</a></li>
+                        <li><a href="juegos/ps4/ps4.html">Playstation 4</a></li>
+                        <li><a href="juegos/ps3/ps3.html">Playstation 3</a></li>
+                        <li><a href="juegos/NintendoSwitch/nintendo.html">Nintendo Switch</a></li>
+                        <li><a href="juegos/enPromocion/enPromocion.html">Juegos en promoción</a></li>
+                        <li><a href="file:///C:/Deck.js/deck.js-latest/boilerplate.html">Documentacion</a></li>
+                        <li><a href="https://www.youtube.com/" target="_blank">Presentación</a></li>
+                        <li><a href="https://www3.animeflv.net/" target="_blank">Pdf</a></li>
+                    </ul>
+                    <hr>
+                </nav>
+            </header>
+            <div v-if = "juegoBuscado === null">
+                <section>
+                    <div class="container-carousel">
+                        <div class="row">
+                            <div class="col">
+                                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                                    <div class="carousel-indicators">
+                                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                    </div>
+                                    <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img src="img/slider/crash_4_switch.jpg" class="d-block w-100" alt="...">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="img/slider/rebajas-2021.jpg" class="d-block w-100" alt="...">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="img/slider/AnimalCrossing.jpg" class="d-block w-100" alt="...">
+                                    </div>
+                                    </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"  data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"  data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="subtitle">
+                        <h2>Nuevos juegos </h2>
+                        <hr>
+                    </div>
+                    <div class="section-games">
+                        <div v-for="juego of juegos" class="container-juego" >
+                            <div class="imagen">
+                                <a href="#"><img v-bind:src="juego.url"></a>
+                            </div>
+                            <p >{{juego.nombre}} <br><b class="precio">S/. {{juego.precio}}0</b> </p>
+                            <button @click= "añadirAlCarrito(id_usuario,juego.id_juego)" >Añadir al carrito</button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div v-else>
+                <div class="section-games">
+                    <div v-for="juego of busqueda" class="container-juego" >
+                        <div class="imagen">
+                            <a href="#"><img v-bind:src="juego.url"></a>
+                        </div>
+                        <p >{{juego.nombre}} <br><b class="precio">S/. {{juego.precio}}0</b> </p>
+                        <button @click= "añadirAlCarrito(juego.id_juego)" >Añadir al carrito</button>
+
+                    </div>
+                </div>
+            </div>
+                
+            <footer>
+            </footer> 
+        </div>
+
+        <div v-if="mostrarLogin">
+            <div class="container" style="position: relative; top: 200px; width: 600px; height: 280px; background: #dfdfdf;">
+                <h1 style="font-family: Agency FB; text-align: center;">Iniciar sesión</h1>
+                <div id="btn" class="row g-3">        
+                    <div class="form-floating mb-3">
+                        <input v-model="usuario.username" type="text" class="form-control" id="emailOrUsername" placeholder="name@example.com" required>
+                        <label for="floatingInput">Usuario o email</label>
+                    </div>
+                    <div class="form-floating">
+                        <input v-model="usuario.password" type="password" name="password" class="form-control" id="password" placeholder="Password" required>
+                        <label for="floatingPassword">Contraseña</label>
+                    </div>
+                    <div class="d-grid gap-2 d-md-block">
+                        <button v-on:click="logIn" class="btn btn-success " type="submit">Ingresar</button>
+                        <a class="btn btn-primary" v-on:click="register" role="button">Registrarse</a>
+                    </div>
+        
+                </div>
+            </div>
+        </div>
+
+        <div v-if="mostrarRegister">
+            <div class="container" style="position: relative; top: 60px; width: 600px; height: 550px; background: #dfdfdf;">
+                <h1 style="font-family: Agency FB; text-align: center;">Registrarse</h1>
+                <div id="element" class="row g-3">  
+                    <form action="">
+                        <div class="form-floating mb-3">
+                            <input v-model="usuario.username" type="text" class="form-control" placeholder="name@example.com" required>
+                            <label for="floatingInput">Usuario</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input  v-model="usuario.nombre" type="text" class="form-control" placeholder="name@example.com" required>
+                            <label for="floatingInput">Nombres</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input  v-model="usuario.apellido" type="text" class="form-control" placeholder="name@example.com" required>
+                            <label for="floatingInput">Apellidos</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input  v-model="usuario.email" type="email" class="form-control" placeholder="name@example.com" required>
+                            <label for="floatingInput">Email</label>
+                        </div>
+                        <div class="form-floating">
+                            <input  v-model="usuario.password" type="password" class="form-control" id="floatingPassword" placeholder="Password" required>
+                            <label for="floatingPassword">Contraseña</label>
+                        </div>
+                        <div class="d-grid gap-2 d-md-block">
+                            <button v-on:click="register" type="submit" class="btn btn-success ">Registrarse</button>
+                            <a class="btn btn-primary" v-on:click="logIn" role="button">Iniciar sesión</a>
+                        </div>
+                    </form>      
+                    
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <Script src="main.js"></Script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    
+</body>
+</html>
